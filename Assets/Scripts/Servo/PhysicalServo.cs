@@ -1,4 +1,4 @@
-using Ble;
+using Communication.Ble;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -9,7 +9,7 @@ namespace Servo
      */
     public class PhysicalServo : MonoBehaviour, IServo
     {
-        public RangerBle rangerBle;
+        public RangerCommunicationBle rangerBle;
         public float minAngle = 0f;
         public float maxAngle = 180f;
         public float rotationSpeed = 0.1f;
@@ -20,7 +20,7 @@ namespace Servo
         {
             if (rangerBle == null)
             {
-                rangerBle = FindFirstObjectByType<RangerBle>();
+                rangerBle = FindFirstObjectByType<RangerCommunicationBle>();
             }
 
             if (this.transform != null)

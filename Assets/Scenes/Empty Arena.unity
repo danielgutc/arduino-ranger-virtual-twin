@@ -274,9 +274,9 @@ MonoBehaviour:
   rangerType: 1
   differentialDriveType: 1
   meEncodersOnBoardType: 1
-  servoType: 1
-  lidarType: 1
-  meUltrasonicSensorType: 1
+  servoType: 0
+  lidarType: 0
+  meUltrasonicSensorType: 0
   rangerPosition:
   - {x: 9975, y: 10001, z: 10025}
   terminal: {fileID: 535944821}

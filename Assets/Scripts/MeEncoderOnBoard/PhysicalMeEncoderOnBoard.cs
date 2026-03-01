@@ -1,11 +1,11 @@
-using Ble;
+using Communication.Ble;
 using UnityEngine;
 
 namespace MeEncoderOnBoard
 {
     public class PhysicalMeEncoderOnBoard : MonoBehaviour, IMeEncoderOnBoard
     {
-        public RangerBle rangerBle;
+        public RangerCommunicationBle rangerBle;
         public float speedMultiplier = 0.1f;
         private float currentSpeed = 0;
         private float targetPosition = 0;
@@ -14,7 +14,7 @@ namespace MeEncoderOnBoard
         {
             if (rangerBle == null)
             {
-                rangerBle = FindFirstObjectByType<RangerBle>();
+                rangerBle = FindFirstObjectByType<RangerCommunicationBle>();
             }
         }
 

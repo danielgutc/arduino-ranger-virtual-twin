@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ble
+namespace Communication
 {
     [Serializable]
     public class Telemetry

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 
-namespace Ble
+namespace Communication.Ble
 {
     public class BleApi
     {

@@ -1,5 +1,4 @@
-using Ble;
-using DiferentialDrive;
+using Communication.Ble;
 using DifferentialDrive;
 using MeEncoderOnBoard;
 using MeUltrasonicSensor;
@@ -50,7 +49,7 @@ public class RangerBuilder
 
     public RangerBuilder SetBleTerminal(TerminalDisplay bleTerminal)
     {
-        RangerBle ble = ranger.GetComponent<RangerBle>();
+        RangerCommunicationBle ble = ranger.GetComponent<RangerCommunicationBle>();
         ble.terminalDisplay = bleTerminal;
 
         return this;

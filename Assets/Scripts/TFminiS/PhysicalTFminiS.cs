@@ -1,4 +1,4 @@
-using Ble;
+using Communication.Ble;
 using System;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ namespace TFminiS
 {
     public class PhysicalTFminiS : MonoBehaviour, ITFminiS
     {
-        public RangerBle rangerBle;
+        public RangerCommunicationBle rangerBle;
         private int distance;
         private int strength;
         private int temperature;
@@ -15,7 +15,7 @@ namespace TFminiS
         {
             if (rangerBle == null)
             {
-                rangerBle = FindFirstObjectByType<RangerBle>();
+                rangerBle = FindFirstObjectByType<RangerCommunicationBle>();
             }
             
             strength = 0; // Not possible to read strength from the physical sensor
