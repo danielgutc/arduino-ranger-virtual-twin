@@ -271,16 +271,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99e6b58f423d0b4cbd736455d21bce4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangerType: 1
+  rangerType: 0
   differentialDriveType: 1
-  meEncodersOnBoardType: 1
+  meEncodersOnBoardType: 0
   servoType: 0
   lidarType: 0
   meUltrasonicSensorType: 0
   rangerPosition:
   - {x: 9975, y: 10001, z: 10025}
   terminal: {fileID: 535944821}
-  bleTerminal: {fileID: 889943090}
+  twinTerminal: {fileID: 889943090}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1174,7 @@ GameObject:
   - component: {fileID: 889943091}
   - component: {fileID: 889943090}
   m_Layer: 5
-  m_Name: Terminal BLE
+  m_Name: Terminal Twin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

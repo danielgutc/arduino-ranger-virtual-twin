@@ -51,7 +51,7 @@ public class RangerSpawner : MonoBehaviour
     public MeUltrasonicSensorType meUltrasonicSensorType = MeUltrasonicSensorType.MeUltrasonicSensorSimulatedPrefab;
     public List<Vector3> rangerPosition = new();
     public TerminalDisplay terminal;
-    public TerminalDisplay bleTerminal;
+    public TerminalDisplay twinTerminal;
 
     void Start()
     {
@@ -66,7 +66,7 @@ public class RangerSpawner : MonoBehaviour
                 .SetLidar(prefabsPath + lidarType.ToString())
                 .SetUltrasonicSensor(prefabsPath + meUltrasonicSensorType.ToString())
                 .SetTerminal(terminal)
-                .SetBleTerminal(bleTerminal)
+                .SetTwinTerminal(twinTerminal)
                 .Build();
 
             ranger.transform.position = rangerPosition[i];

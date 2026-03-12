@@ -1,4 +1,4 @@
-using Communication.Ble;
+using Communication.Http;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -9,7 +9,7 @@ namespace Servo
      */
     public class PhysicalServo : MonoBehaviour, IServo
     {
-        public RangerCommunicationBle rangerBle;
+        public RangerCommunicationHttp rangerComm;
         public float minAngle = 0f;
         public float maxAngle = 180f;
         public float rotationSpeed = 0.1f;
@@ -18,9 +18,9 @@ namespace Servo
 
         private void Start()
         {
-            if (rangerBle == null)
+            if (rangerComm == null)
             {
-                rangerBle = FindFirstObjectByType<RangerCommunicationBle>();
+                rangerComm = FindFirstObjectByType<RangerCommunicationHttp>();
             }
 
             if (this.transform != null)
@@ -33,7 +33,7 @@ namespace Servo
         {
             if (isAttached)
             {
-                this.transform.localRotation = Quaternion.Euler(0, rangerBle.Telemetry.Angle, 0);
+                this.transform.localRotation = Quaternion.Euler(0, rangerComm.Telemetry.Angle, 0);
             }
         }
 
@@ -54,12 +54,12 @@ namespace Servo
 
         public int Read()
         {
-            return rangerBle.Telemetry.Angle; // Read the angle from the RangerBle telemetry
+            return rangerComm.Telemetry.Angle; // Read the angle from the RangerCommunicationHttp telemetry
         }
 
         public int ReadMicroseconds()
         {
-            return Mathf.RoundToInt(Mathf.Lerp(544, 2400, (rangerBle.Telemetry.Angle - minAngle) / (maxAngle - minAngle)));
+            return Mathf.RoundToInt(Mathf.Lerp(544, 2400, (rangerComm.Telemetry.Angle - minAngle) / (maxAngle - minAngle)));
         }
 
         public bool Attached()

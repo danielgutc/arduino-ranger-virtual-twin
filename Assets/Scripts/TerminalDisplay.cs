@@ -12,5 +12,12 @@ public class TerminalDisplay : MonoBehaviour
             displayText.text = log;
         }
     }
+    public void AppendToDisplay(string log)
+    {
+        if (displayText != null)
+        {
+            displayText.text += log;
+        }
+    }
 }
 

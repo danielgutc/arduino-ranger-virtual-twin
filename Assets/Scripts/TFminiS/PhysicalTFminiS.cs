@@ -1,4 +1,4 @@
-using Communication.Ble;
+using Communication.Http;
 using System;
 using UnityEngine;
 
@@ -6,16 +6,16 @@ namespace TFminiS
 {
     public class PhysicalTFminiS : MonoBehaviour, ITFminiS
     {
-        public RangerCommunicationBle rangerBle;
+        public RangerCommunicationHttp rangerComm;
         private int distance;
         private int strength;
         private int temperature;
 
         void Start()
         {
-            if (rangerBle == null)
+            if (rangerComm == null)
             {
-                rangerBle = FindFirstObjectByType<RangerCommunicationBle>();
+                rangerComm = FindFirstObjectByType<RangerCommunicationHttp>();
             }
             
             strength = 0; // Not possible to read strength from the physical sensor
@@ -44,7 +44,7 @@ namespace TFminiS
 
         public void ReadSensor()
         {
-            distance = rangerBle.Telemetry.Lidar;
+            distance = rangerComm.Telemetry.Lidar;
         }
 
 

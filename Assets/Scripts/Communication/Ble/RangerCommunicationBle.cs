@@ -11,14 +11,13 @@ namespace Communication.Ble
         public string rangerNameKeyword = "Makeblock_LE703e97f555d4";
         public string telemetryServiceUuid = "00006287-3c17-d293-8e48-14fe2e4da212";
         public string telemetryCharUuid = "0000ffe2-0000-1000-8000-00805f9b34fb";
-        public TerminalDisplay terminalDisplay;
 
         private string connectedDeviceId;
         private bool isScanningDevices = false;
         private bool isDeviceScanStarted = false;
         private bool isSubscribed = false;
-
         private Telemetry telemetry;
+        public TerminalDisplay terminalDisplay;
         public Telemetry Telemetry { get => telemetry; }
 
         void Start()
@@ -38,7 +37,7 @@ namespace Communication.Ble
 
             if (isSubscribed)
             {
-                BleApi.BLEData telemetryBleData = new BleApi.BLEData();
+                BleApi.BLEData telemetryBleData;
                 while (BleApi.PollData(out telemetryBleData, false))
                 {
                     string message = Encoding.ASCII.GetString(telemetryBleData.buf, 0, telemetryBleData.size).TrimEnd('\0');
@@ -73,7 +72,7 @@ namespace Communication.Ble
                 if (!string.IsNullOrEmpty(device.name) &&
                     device.name.ToLower().Contains(rangerNameKeyword.ToLower()))
                 {
-                    terminalDisplay.UpdateDisplay($"Found Ranger device: {device.name} ({device.id})");
+                    terminalDisplay.UpdateDisplay($"Found Ranger device: {device.name} ({device.id}). ");
                     connectedDeviceId = device.id;
                     isScanningDevices = false;
                     BleApi.StopDeviceScan();
@@ -83,7 +82,7 @@ namespace Communication.Ble
             }
             else if (status == BleApi.ScanStatus.FINISHED)
             {
-                terminalDisplay.UpdateDisplay("Scan finished with no match.");
+                terminalDisplay.UpdateDisplay("Scan finished with no match. ");
                 BleApi.StopDeviceScan();
                 isDeviceScanStarted = false;
                 isScanningDevices = false;
@@ -93,7 +92,12 @@ namespace Communication.Ble
         public void Subscribe()
         {
             // no error code available in non-blocking mode
-            BleApi.SubscribeCharacteristic(connectedDeviceId, telemetryServiceUuid, telemetryCharUuid, false);
+            bool s = BleApi.SubscribeCharacteristic(connectedDeviceId, telemetryServiceUuid, telemetryCharUuid, false);
+            if (!s)
+            {
+                terminalDisplay.AppendToDisplay("Failed to subscribe to telemetry characteristic. ");
+                return;
+            }
             isSubscribed = true;
         }
 

@@ -1,17 +1,17 @@
-using Communication.Ble;
+using Communication.Http;
 using MeUltrasonicSensor;
 using UnityEngine;
 
 public class PhysicalMeUltrasonicSensor : MonoBehaviour, IMeUltrasonicSensor
 {
-    public RangerCommunicationBle rangerBle;
+    public RangerCommunicationHttp rangerComm;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (rangerBle == null)
+        if (rangerComm == null)
         {
-            rangerBle = FindFirstObjectByType<RangerCommunicationBle>();
+            rangerComm = FindFirstObjectByType<RangerCommunicationHttp>();
         }
     }
 
@@ -24,7 +24,7 @@ public class PhysicalMeUltrasonicSensor : MonoBehaviour, IMeUltrasonicSensor
     // Implement the interface methods here
     public float GetDistance()
     {
-        return rangerBle.Telemetry.Ultrasonic;
+        return rangerComm.Telemetry.Ultrasonic;
     }
 
     public float GetDistanceCm()

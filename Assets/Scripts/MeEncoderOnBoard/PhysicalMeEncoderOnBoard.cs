@@ -1,20 +1,20 @@
-using Communication.Ble;
+using Communication.Http;
 using UnityEngine;
 
 namespace MeEncoderOnBoard
 {
     public class PhysicalMeEncoderOnBoard : MonoBehaviour, IMeEncoderOnBoard
     {
-        public RangerCommunicationBle rangerBle;
+        public RangerCommunicationHttp rangerComm;
         public float speedMultiplier = 0.1f;
         private float currentSpeed = 0;
         private float targetPosition = 0;
 
         private void Start()
         {
-            if (rangerBle == null)
+            if (rangerComm == null)
             {
-                rangerBle = FindFirstObjectByType<RangerCommunicationBle>();
+                rangerComm = FindFirstObjectByType<RangerCommunicationHttp>();
             }
         }
 
@@ -37,11 +37,11 @@ namespace MeEncoderOnBoard
         {
             if (this.transform.gameObject.name.ToLower().Contains("left"))
             {
-                return rangerBle.Telemetry.LeftMotorSpeed;
+                return rangerComm.Telemetry.LeftMotorSpeed;
             }
             else
             {
-                return rangerBle.Telemetry.RightMotorSpeed;
+                return rangerComm.Telemetry.RightMotorSpeed;
             }
         }
 

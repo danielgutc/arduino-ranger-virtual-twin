@@ -1,4 +1,5 @@
-using Communication.Ble;
+using Communication;
+using Communication.Http;
 using DifferentialDrive;
 using MeEncoderOnBoard;
 using MeUltrasonicSensor;
@@ -47,10 +48,10 @@ public class RangerBuilder
         return this;
     }
 
-    public RangerBuilder SetBleTerminal(TerminalDisplay bleTerminal)
+    public RangerBuilder SetTwinTerminal(TerminalDisplay twinTerminal)
     {
-        RangerCommunicationBle ble = ranger.GetComponent<RangerCommunicationBle>();
-        ble.terminalDisplay = bleTerminal;
+        RangerCommunicationHttp http = ranger.GetComponent<RangerCommunicationHttp>();
+        http.terminalDisplay = twinTerminal;
 
         return this;
     }
