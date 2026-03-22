@@ -24,15 +24,15 @@ namespace Communication
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"State: {State}");
+            //sb.AppendLine($"State: {State}");
             sb.AppendLine($"Lidar: {Lidar}");
-            sb.AppendLine($"Ultrasonic: {Ultrasonic}");
+            //sb.AppendLine($"Ultrasonic: {Ultrasonic}");
             sb.AppendLine($"Angle: {Angle}");
-            sb.AppendLine($"ObstacleDetected: {ObstacleDetected}");
-            sb.AppendLine($"CurrentScanMaxDistance: {CurrentScanMaxDistance}");
-            sb.AppendLine($"CurrentScanMaxDistanceAngle: {CurrentScanMaxDistanceAngle}");
-            sb.AppendLine($"MaxDistanceAngle: {MaxDistanceAngle}");
-            sb.AppendLine($"WaitNextScan: {WaitNextScan}");
+            //sb.AppendLine($"ObstacleDetected: {ObstacleDetected}");
+            //sb.AppendLine($"CurrentScanMaxDistance: {CurrentScanMaxDistance}");
+            //sb.AppendLine($"CurrentScanMaxDistanceAngle: {CurrentScanMaxDistanceAngle}");
+            //sb.AppendLine($"MaxDistanceAngle: {MaxDistanceAngle}");
+            //sb.AppendLine($"WaitNextScan: {WaitNextScan}");
             sb.AppendLine($"LeftMotorSpeed: {LeftMotorSpeed}");
             sb.AppendLine($"RightMotorSpeed: {RightMotorSpeed}");
             return sb.ToString();

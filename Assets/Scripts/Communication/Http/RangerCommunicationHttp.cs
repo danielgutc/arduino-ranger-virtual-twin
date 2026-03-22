@@ -14,6 +14,7 @@ namespace Communication.Http
         public TerminalDisplay terminalDisplay;
         private readonly object telemetryLock = new object();
         private Telemetry telemetry = new Telemetry();
+        private Command command = new Command(); 
         private HttpListener listener;
         private Thread listenerThread;
         private volatile bool isRunning;
@@ -25,6 +26,17 @@ namespace Communication.Http
                 lock (telemetryLock)
                 {
                     return telemetry;
+                }
+            }
+        }
+
+        public Command Command
+        {
+            get
+            {
+                lock (telemetryLock)
+                {
+                    return command;
                 }
             }
         }
@@ -139,7 +151,7 @@ namespace Communication.Http
                     return;
                 }
 
-                if (!request.Url.AbsolutePath.Equals("/telemetry", StringComparison.OrdinalIgnoreCase))
+                if (!request.Url.AbsolutePath.Equals("/ranger-command", StringComparison.OrdinalIgnoreCase))
                 {
                     WriteResponse(response, 404, "Not found.");
                     return;
@@ -163,7 +175,7 @@ namespace Communication.Http
                     telemetry = payload.ToTelemetry();
                 }
 
-                WriteResponse(response, 200, "Telemetry updated.");
+                WriteResponse(response, 200, JsonUtility.ToJson(Command), "application/json");
             }
             catch (Exception ex)
             {
@@ -171,10 +183,10 @@ namespace Communication.Http
             }
         }
 
-        private static void WriteResponse(HttpListenerResponse response, int statusCode, string message)
+        private static void WriteResponse(HttpListenerResponse response, int statusCode, string message, string contentType = "text/plain")
         {
             response.StatusCode = statusCode;
-            response.ContentType = "text/plain";
+            response.ContentType = contentType;
 
             byte[] buffer = Encoding.UTF8.GetBytes(message);
             response.ContentLength64 = buffer.Length;

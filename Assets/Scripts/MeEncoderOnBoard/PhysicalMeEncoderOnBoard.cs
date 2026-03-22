@@ -25,12 +25,19 @@ namespace MeEncoderOnBoard
 
         public void SetCurrentSpeed(float speed)
         {
-            // Not implemented yet. Target is to send the speed to the physical motor via Bluetooth.
+            if (this.transform.gameObject.name.ToLower().Contains("left"))
+            {
+                rangerComm.Command.LeftMotorSpeed = speed;
+            }
+            else
+            {
+                rangerComm.Command.RightMotorSpeed = speed;
+            }
         }
 
         public void StopMotor()
         {
-            // Not implemented yet. Target is to send the speed to the physical motor via Bluetooth.
+            rangerComm.Command.LeftMotorSpeed = rangerComm.Command.RightMotorSpeed = 0;
         }
 
         public float GetCurrentSpeed()
