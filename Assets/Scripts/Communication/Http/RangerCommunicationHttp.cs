@@ -145,6 +145,8 @@ namespace Communication.Http
 
             try
             {
+                Debug.Log($"[{nameof(RangerCommunicationHttp)}] Incoming request: {request.HttpMethod} {request.Url}");
+
                 if (!request.HttpMethod.Equals("POST", StringComparison.OrdinalIgnoreCase))
                 {
                     WriteResponse(response, 405, "Only POST is allowed.");
@@ -163,6 +165,8 @@ namespace Communication.Http
                     body = reader.ReadToEnd();
                 }
 
+                Debug.Log($"[{nameof(RangerCommunicationHttp)}] Request body: {body}");
+
                 var payload = JsonUtility.FromJson<TelemetryPayload>(body);
                 if (payload == null)
                 {
@@ -175,10 +179,12 @@ namespace Communication.Http
                     telemetry = payload.ToTelemetry();
                 }
 
-                WriteResponse(response, 200, JsonUtility.ToJson(Command), "application/json");
+                var commandJson = JsonUtility.ToJson(Command);
+                WriteResponse(response, 200, commandJson, "application/json");
             }
             catch (Exception ex)
             {
+                Debug.LogError($"[{nameof(RangerCommunicationHttp)}] Request handling failed: {ex}");
                 WriteResponse(response, 400, $"Invalid request: {ex.Message}");
             }
         }
@@ -187,6 +193,8 @@ namespace Communication.Http
         {
             response.StatusCode = statusCode;
             response.ContentType = contentType;
+
+            Debug.Log($"[{nameof(RangerCommunicationHttp)}] Response: {statusCode} {contentType} {message}");
 
             byte[] buffer = Encoding.UTF8.GetBytes(message);
             response.ContentLength64 = buffer.Length;
