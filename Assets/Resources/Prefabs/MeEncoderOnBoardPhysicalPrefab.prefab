@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d0528d9c1b73e4aa8a647cdf5163ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangerBle: {fileID: 0}
-  speedMultiplier: 0.1
+  rangerComm: {fileID: 0}
+  speedMultiplier: 5

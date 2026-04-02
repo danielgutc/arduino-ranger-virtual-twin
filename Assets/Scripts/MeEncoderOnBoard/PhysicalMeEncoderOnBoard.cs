@@ -25,30 +25,32 @@ namespace MeEncoderOnBoard
 
         public void SetCurrentSpeed(float speed)
         {
+            currentSpeed = speed * speedMultiplier;
+
             if (this.transform.gameObject.name.ToLower().Contains("left"))
             {
-                rangerComm.Command.LeftMotorSpeed = speed;
+                rangerComm.Command.LeftMotorSpeed = -speed * speedMultiplier;
             }
             else
             {
-                rangerComm.Command.RightMotorSpeed = speed;
+                rangerComm.Command.RightMotorSpeed = speed * speedMultiplier;
             }
         }
 
         public void StopMotor()
         {
-            rangerComm.Command.LeftMotorSpeed = rangerComm.Command.RightMotorSpeed = 0;
+            currentSpeed = rangerComm.Command.LeftMotorSpeed = rangerComm.Command.RightMotorSpeed = 0;
         }
 
         public float GetCurrentSpeed()
         {
             if (this.transform.gameObject.name.ToLower().Contains("left"))
             {
-                return rangerComm.Telemetry.LeftMotorSpeed;
+                return rangerComm.Telemetry.LeftMotorSpeed / speedMultiplier;
             }
             else
             {
-                return rangerComm.Telemetry.RightMotorSpeed;
+                return rangerComm.Telemetry.RightMotorSpeed / speedMultiplier;
             }
         }
 

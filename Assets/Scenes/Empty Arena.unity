@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &64881059
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -273,10 +273,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangerType: 1
   differentialDriveType: 1
-  meEncodersOnBoardType: 1
-  servoType: 1
-  lidarType: 1
-  meUltrasonicSensorType: 1
+  meEncodersOnBoardType: 0
+  servoType: 0
+  lidarType: 0
+  meUltrasonicSensorType: 0
   rangerPosition:
   - {x: 9975, y: 10001, z: 10025}
   terminal: {fileID: 535944821}
@@ -600,7 +600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &473088646
 Transform:
   m_ObjectHideFlags: 0
@@ -887,7 +887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &695989426
 Transform:
   m_ObjectHideFlags: 0
@@ -1107,7 +1107,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 0, z: 100}
+  m_LocalScale: {x: 1000, y: 0, z: 1000}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 450254218}
@@ -1468,7 +1468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1274190024
 Transform:
   m_ObjectHideFlags: 0
@@ -1712,7 +1712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1324762996
 Transform:
   m_ObjectHideFlags: 0
@@ -1920,7 +1920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1641483661
 Transform:
   m_ObjectHideFlags: 0
@@ -2271,7 +2271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1834071430
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2379,7 +2379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1897387042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2487,7 +2487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1987887581
 BoxCollider:
   m_ObjectHideFlags: 0

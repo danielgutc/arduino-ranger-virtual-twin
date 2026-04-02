@@ -339,7 +339,7 @@ MonoBehaviour:
   MAX_SPEED: 18
   WIDE_SCAN_ANGLE: 60
   WAIT_SERVO_POSITION: 1.5
-  TURN_SPEED_MULT: 1.5
+  TURN_SPEED_MULT: 1
 --- !u!114 &-4188776242602133566
 MonoBehaviour:
   m_ObjectHideFlags: 0
